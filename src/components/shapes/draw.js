@@ -617,6 +617,7 @@ function activateShape(gd, path) {
         gd._fullLayout._activeShapeIndex = id;
         gd._fullLayout._deactivateShape = deactivateShape;
         draw(gd);
+        gd.emit('plotly_shape_activated', gd._fullLayout.shapes[id]);
     }
 }
 
@@ -628,6 +629,7 @@ function deactivateShape(gd) {
         clearOutlineControllers(gd);
         delete gd._fullLayout._activeShapeIndex;
         draw(gd);
+        gd.emit('plotly_shape_deactivated', gd._fullLayout.shapes[id]);
     }
 }
 
